@@ -1,11 +1,32 @@
 version = 1
 
+test_patterns = [
+  "*/test/**",
+  "**/__tests__/**",
+  "**/*.test.js",
+  "**/*.spec.js"
+]
+
+exclude_patterns = [
+  "public/**",
+  "dist/**",
+  "build/**",
+  "node_modules/**"
+]
+
 [[analyzers]]
 name = "javascript"
+enabled = true
 
-  [analyzers.meta]
-  environment = [
-    "nodejs",
-    "jest",
-    "mongo"
-  ]
+[analyzers.meta]
+plugins = ["react"]
+module_system = "es-modules"
+environment = [
+  "nodejs",
+  "browser",
+  "jest"
+]
+
+[[analyzers]]
+name = "test-coverage"
+enabled = true
